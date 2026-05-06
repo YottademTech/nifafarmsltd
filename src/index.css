@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-stone-50 text-stone-950 font-sans;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-forest-600 text-white;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6 lg:px-10;
+  }
+
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-6 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.2em] uppercase;
+  }
+
+  .display-heading {
+    @apply font-display font-semibold leading-[1.05] tracking-[-0.02em];
+  }
+
+  .section-gap {
+    @apply py-24 lg:py-32;
+  }
+
+  .section-gap-sm {
+    @apply py-16 lg:py-20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-forest-600 text-white px-7 py-3.5 text-sm font-medium
+           tracking-wide transition-all duration-200 hover:bg-forest-500 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-sm font-medium tracking-wide
+           transition-all duration-200 hover:opacity-70;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-current px-7 py-3.5
+           text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-70 active:scale-[0.98];
+  }
+
+  /* Subtle grain overlay on dark sections */
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  .divider {
+    @apply border-t border-stone-200;
+  }
+
+  .divider-dark {
+    @apply border-t border-white/10;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
