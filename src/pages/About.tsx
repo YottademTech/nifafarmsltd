@@ -1,4 +1,5 @@
 import ScrollReveal from '../components/ui/ScrollReveal'
+import SEO from '../components/ui/SEO'
 import { BOARD_MEMBERS, MANAGEMENT_ROLES, CORE_VALUES, COMPANY_INFO } from '../lib/constants'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
@@ -16,6 +17,11 @@ const TIMELINE = [
 export default function About() {
   return (
     <>
+      <SEO
+        title="About Us"
+        description="Learn about Nifa Farms Limited — a wholly Ghanaian company founded in 2018 in Offinso–Ahenkro, Ashanti Region. Our story, board of directors, management team, core values, and company timeline."
+        path="/about"
+      />
       {/* Page Hero */}
       <section className="bg-forest-900 pt-36 pb-24 grain-overlay">
         <div className="container-wide relative z-10">

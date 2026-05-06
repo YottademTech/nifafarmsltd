@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ui/ScrollReveal'
+import SEO from '../components/ui/SEO'
 import { PRODUCTS, type ProductCategory } from '../lib/constants'
 
 const FILTERS: { label: string; value: 'All' | ProductCategory }[] = [
@@ -20,6 +21,11 @@ export default function Products() {
 
   return (
     <>
+      <SEO
+        title="Products &amp; Services"
+        description="Explore Nifa Farms' full range of cocoa and shea products — cocoa liquor, cocoa butter, cocoa powder, cocoa shell, shea butter, shea oil, shea stearin, shea cake — plus commodity haulage and aggregation services."
+        path="/products"
+      />
       {/* Page Hero */}
       <section className="bg-forest-950 pt-36 pb-20 grain-overlay">
         <div className="container-wide relative z-10">

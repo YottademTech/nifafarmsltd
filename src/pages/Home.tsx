@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowDown, MapPin, Truck, Sprout, ChevronRight } from 'lucide-react'
 import ScrollReveal from '../components/ui/ScrollReveal'
+import SEO from '../components/ui/SEO'
 import { STATS, PRODUCTS, MARKETS, CLIENTS, SUSTAINABILITY_PILLARS } from '../lib/constants'
 
 const FEATURED_PRODUCTS = PRODUCTS.filter(p => p.category !== 'Services').slice(0, 6)
@@ -9,6 +10,11 @@ const FEATURED_PRODUCTS = PRODUCTS.filter(p => p.category !== 'Services').slice(
 export default function Home() {
   return (
     <>
+      <SEO
+        title="Ghana's Premier Cocoa &amp; Shea Processing Enterprise"
+        description="Nifa Farms Limited — Ghana's premier cocoa and shea nuts processing enterprise. Producers of cocoa liquor, cocoa butter, cocoa powder, shea butter and more. 32,000 MT annual capacity from 2027. Offinso–Ahenkro, Ashanti Region."
+        path="/"
+      />
       {/* ── HERO ──────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col justify-end grain-overlay bg-forest-950 overflow-hidden">
         {/* Background rings */}

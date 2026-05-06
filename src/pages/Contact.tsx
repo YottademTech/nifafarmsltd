@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin, Phone, Mail, CheckCircle, Send } from 'lucide-react'
 import ScrollReveal from '../components/ui/ScrollReveal'
+import SEO from '../components/ui/SEO'
 import { COMPANY_INFO } from '../lib/constants'
 
 interface FormState {
@@ -43,6 +44,11 @@ export default function Contact() {
 
   return (
     <>
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Nifa Farms Limited. For product enquiries, export partnerships, investment opportunities, and haulage services. Based in Offinso–Ahenkro, Ashanti Region, Ghana. Tel: +233 247 023 698."
+        path="/contact"
+      />
       {/* Page Hero */}
       <section className="bg-forest-950 pt-36 pb-20 grain-overlay">
         <div className="container-wide relative z-10">

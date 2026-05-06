@@ -1,4 +1,5 @@
 import ScrollReveal from '../components/ui/ScrollReveal'
+import SEO from '../components/ui/SEO'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Users, Leaf, ShieldCheck, Building2 } from 'lucide-react'
 
@@ -63,6 +64,11 @@ const WORKFORCE = [
 export default function Sustainability() {
   return (
     <>
+      <SEO
+        title="Sustainability &amp; Responsibility"
+        description="Nifa Farms Limited's commitment to health &amp; safety, quality assurance, environmental responsibility, and community development. Zero-incident policy, local content compliance, and sustainable cocoa farming in Ghana."
+        path="/sustainability"
+      />
       {/* Page Hero */}
       <section className="bg-forest-800 pt-36 pb-24 grain-overlay">
         <div className="container-wide relative z-10">
