@@ -78,12 +78,13 @@ async function sendMailWithFallback(
   throw lastError
 }
 
-export async function sendContactEmail(body: Partial<ContactPayload>): Promise<void> {
-  const name = body.name?.trim()
-  const company = body.company?.trim() ?? ''
-  const email = body.email?.trim()
-  const subject = body.subject?.trim()
-  const message = body.message?.trim()
+export async function sendContactEmail(body: Partial<ContactPayload> | undefined): Promise<void> {
+  const payload = body ?? {}
+  const name = payload.name?.trim()
+  const company = payload.company?.trim() ?? ''
+  const email = payload.email?.trim()
+  const subject = payload.subject?.trim()
+  const message = payload.message?.trim()
 
   if (!name || !email || !subject || !message) {
     throw new ContactEmailError(400, 'Please fill in all required fields.')
