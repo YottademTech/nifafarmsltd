@@ -133,6 +133,7 @@ export const BOARD_MEMBERS = [
     experience: '28+ years',
     fields: 'Heavy Industrial Machinery, Oil & Gas, Commodity Trading',
     qualifications: ['MBA – USA', 'BSc Administration – USA'],
+    image: '/images/leadership-01.jpg',
   },
   {
     name: 'Derick Tinkler Owusu Ntimgyakari',
@@ -140,6 +141,7 @@ export const BOARD_MEMBERS = [
     experience: '24+ years',
     fields: 'Investment Banking, Accounting & Finance, Commodity Trading, Manufacturing',
     qualifications: ['CGIA', 'ACCA', 'MSc Accounting – UCL / University of London', 'MA Economic Policy – University of Ghana'],
+    image: '/images/leadership-04.jpg',
   },
   {
     name: 'Frank Osei',
@@ -147,6 +149,7 @@ export const BOARD_MEMBERS = [
     experience: '22+ years',
     fields: 'Audit & Legal Practice',
     qualifications: ['Barrister of Law – Ghana', 'ACCA', 'ICAG', 'CITG', 'MBA – University of Ghana'],
+    image: '/images/legal-counsel.jpg',
   },
   {
     name: 'Emmanuel Ampofo',
@@ -154,6 +157,7 @@ export const BOARD_MEMBERS = [
     experience: '36+ years',
     fields: 'Heavy Industry, Real Estates, Manufacturing & Food Processing',
     qualifications: ['Part I ACCA', 'BSc Administration'],
+    image: '/images/leadership-02.jpg',
   },
   {
     name: 'John Duodu Anaman',
@@ -161,6 +165,7 @@ export const BOARD_MEMBERS = [
     experience: '32+ years',
     fields: 'Accounting & Finance, Commodities Trading, Manufacturing & Processing',
     qualifications: ['Part II ACCA', 'HND – Kumasi Polytechnic'],
+    image: '/images/leadership-03.jpg',
   },
 ]
 

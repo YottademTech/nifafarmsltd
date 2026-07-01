@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail, CheckCircle, Send } from 'lucide-react'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import SEO from '../components/ui/SEO'
 import { COMPANY_INFO } from '../lib/constants'
+import { IMAGES } from '../lib/images'
 
 interface FormState {
   name: string
@@ -50,18 +51,22 @@ export default function Contact() {
         path="/contact"
       />
       {/* Page Hero */}
-      <section className="bg-forest-950 pt-36 pb-20 grain-overlay">
+      <section className="relative bg-forest-950 pt-36 pb-20 grain-overlay overflow-hidden">
+        <div className="page-hero-bg">
+          <img src={IMAGES.officeReception} alt="" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-b from-forest-950/30 via-forest-950/50 to-forest-950/85" />
+        </div>
         <div className="container-wide relative z-10">
           <ScrollReveal>
-            <p className="eyebrow text-gold-400/70 text-[10px] mb-5">Get in Touch</p>
+            <p className="eyebrow text-gold-400/70 mb-5">Get in Touch</p>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
-            <h1 className="display-heading text-white text-5xl lg:text-7xl max-w-xl">
+            <h1 className="display-heading text-white text-5xl sm:text-6xl lg:text-7xl max-w-xl">
               Let's Start a<br />Conversation.
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
-            <p className="text-white/40 mt-6 text-base max-w-md leading-relaxed">
+            <p className="text-white/40 mt-6 text-base sm:text-lg max-w-md leading-relaxed">
               Whether you are a buyer, investor, or logistics partner — we want to hear from you.
             </p>
           </ScrollReveal>
@@ -105,13 +110,13 @@ export default function Contact() {
                         <Icon size={15} className="text-forest-700" />
                       </div>
                       <div>
-                        <p className="eyebrow text-[9px] text-stone-400 mb-1">{label}</p>
+                        <p className="eyebrow text-stone-400 mb-1">{label}</p>
                         {href ? (
-                          <a href={href} className="text-forest-950 text-sm font-medium hover:text-forest-700 transition-colors duration-200 leading-relaxed">
+                          <a href={href} className="text-forest-950 text-base font-medium hover:text-forest-700 transition-colors duration-200 leading-relaxed">
                             {value}
                           </a>
                         ) : (
-                          <p className="text-forest-950 text-sm font-medium leading-relaxed">{value}</p>
+                          <p className="text-forest-950 text-base font-medium leading-relaxed">{value}</p>
                         )}
                       </div>
                     </div>
@@ -122,15 +127,15 @@ export default function Contact() {
               {/* Secondary contact */}
               <ScrollReveal delay={0.24}>
                 <div className="mt-12 p-6 bg-forest-950 text-white">
-                  <p className="eyebrow text-[9px] text-gold-400/70 mb-4">Alternative Contact</p>
+                  <p className="eyebrow text-gold-400/70 mb-4">Alternative Contact</p>
                   <a
                     href="mailto:dericktinkler2231@gmail.com"
-                    className="text-sm text-white/60 hover:text-white transition-colors duration-200 block"
+                    className="text-base text-white/60 hover:text-white transition-colors duration-200 block"
                   >
                     dericktinkler2231@gmail.com
                   </a>
                   <div className="divider-dark mt-5 pt-5">
-                    <p className="text-white/25 text-xs leading-relaxed">
+                    <p className="text-white/25 text-sm sm:text-base leading-relaxed">
                       For investment and corporate inquiries, please reference your company and purpose in all correspondence.
                     </p>
                   </div>
@@ -156,12 +161,12 @@ export default function Contact() {
                       <h3 className="font-display text-2xl text-forest-950 font-semibold mb-4">
                         Message received.
                       </h3>
-                      <p className="text-stone-500 text-sm leading-relaxed mb-8 max-w-sm">
+                      <p className="text-stone-500 text-base leading-relaxed mb-8 max-w-sm">
                         Thank you for reaching out. A member of the Nifa Farms team will respond to your enquiry within two business days.
                       </p>
                       <button
                         onClick={() => { setSubmitted(false); setForm({ name: '', company: '', email: '', subject: '', message: '' }) }}
-                        className="btn-ghost text-forest-600 text-sm"
+                        className="btn-ghost text-forest-600"
                       >
                         Send another message
                       </button>
@@ -174,7 +179,7 @@ export default function Contact() {
                     >
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
-                          <label className="block eyebrow text-[9px] text-stone-400 mb-2" htmlFor="name">
+                          <label className="block eyebrow text-stone-400 mb-2" htmlFor="name">
                             Full Name *
                           </label>
                           <input
@@ -185,11 +190,11 @@ export default function Contact() {
                             value={form.name}
                             onChange={handleChange}
                             placeholder="Your full name"
-                            className="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200"
+                            className="w-full border border-stone-200 bg-stone-50 px-4 py-3.5 text-base text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200"
                           />
                         </div>
                         <div>
-                          <label className="block eyebrow text-[9px] text-stone-400 mb-2" htmlFor="company">
+                          <label className="block eyebrow text-stone-400 mb-2" htmlFor="company">
                             Company / Organisation
                           </label>
                           <input
@@ -199,13 +204,13 @@ export default function Contact() {
                             value={form.company}
                             onChange={handleChange}
                             placeholder="Your company name"
-                            className="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200"
+                            className="w-full border border-stone-200 bg-stone-50 px-4 py-3.5 text-base text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block eyebrow text-[9px] text-stone-400 mb-2" htmlFor="email">
+                        <label className="block eyebrow text-stone-400 mb-2" htmlFor="email">
                           Email Address *
                         </label>
                         <input
@@ -216,12 +221,12 @@ export default function Contact() {
                           value={form.email}
                           onChange={handleChange}
                           placeholder="your@email.com"
-                          className="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200"
+                          className="w-full border border-stone-200 bg-stone-50 px-4 py-3.5 text-base text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200"
                         />
                       </div>
 
                       <div>
-                        <label className="block eyebrow text-[9px] text-stone-400 mb-2" htmlFor="subject">
+                        <label className="block eyebrow text-stone-400 mb-2" htmlFor="subject">
                           Subject *
                         </label>
                         <select
@@ -230,7 +235,7 @@ export default function Contact() {
                           required
                           value={form.subject}
                           onChange={handleChange}
-                          className="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-forest-950 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200 appearance-none"
+                          className="w-full border border-stone-200 bg-stone-50 px-4 py-3.5 text-base text-forest-950 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200 appearance-none"
                         >
                           <option value="" disabled>Select a subject</option>
                           {SUBJECTS.map(s => (
@@ -240,7 +245,7 @@ export default function Contact() {
                       </div>
 
                       <div>
-                        <label className="block eyebrow text-[9px] text-stone-400 mb-2" htmlFor="message">
+                        <label className="block eyebrow text-stone-400 mb-2" htmlFor="message">
                           Message *
                         </label>
                         <textarea
@@ -251,7 +256,7 @@ export default function Contact() {
                           value={form.message}
                           onChange={handleChange}
                           placeholder="Please describe your enquiry in as much detail as possible..."
-                          className="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200 resize-none"
+                          className="w-full border border-stone-200 bg-stone-50 px-4 py-3.5 text-base text-forest-950 placeholder-stone-300 focus:outline-none focus:border-forest-500 focus:bg-white transition-all duration-200 resize-none"
                         />
                       </div>
 
@@ -285,23 +290,35 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map placeholder */}
-      <section className="bg-stone-100 h-64 lg:h-80 relative overflow-hidden">
-        <div className="absolute inset-0 bg-forest-900/5" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin size={28} className="text-forest-600 mx-auto mb-3" />
-            <p className="font-display text-forest-950 text-lg font-medium">Offinso – Ahenkro</p>
-            <p className="text-stone-500 text-sm mt-1">Ashanti Region, Ghana, West Africa</p>
+      {/* Map */}
+      <section className="bg-stone-100">
+        <div className="container-wide py-10 lg:py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-stone-200">
+          <div className="flex items-start gap-4">
+            <MapPin size={20} className="text-forest-600 shrink-0 mt-0.5" />
+            <div>
+              <p className="font-display text-forest-950 text-xl font-medium">Nifa Farms Limited</p>
+              <p className="text-stone-500 text-base mt-1">{COMPANY_INFO.address}</p>
+            </div>
           </div>
+          <a
+            href="https://maps.google.com/?q=NIFA+FARMS+LIMITED"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-forest-600 text-base font-medium hover:text-forest-500 transition-colors duration-200 shrink-0"
+          >
+            Open in Google Maps →
+          </a>
         </div>
-        {/* Decorative grid lines */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{
-            backgroundImage: 'linear-gradient(to right, #1B5E20 1px, transparent 1px), linear-gradient(to bottom, #1B5E20 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
+        <div className="relative w-full h-72 lg:h-[450px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1054826906793!2d-1.6470909246727592!3d6.877964393120866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdbbb85dc8a63c5%3A0x94d80d5cb4b0d173!2sNIFA%20FARMS%20LIMITED!5e0!3m2!1sen!2sgh!4v1782825808653!5m2!1sen!2sgh"
+            title="Nifa Farms Limited location on Google Maps"
+            className="absolute inset-0 w-full h-full border-0"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
       </section>
     </>
   )

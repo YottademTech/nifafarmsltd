@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, ArrowDown, MapPin, Truck, Sprout, ChevronRight } from 'lucide-react'
+import { ArrowDown, ArrowRight, ChevronRight, MapPin, Sprout, Truck } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import FarmImage from '../components/ui/FarmImage'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import SEO from '../components/ui/SEO'
-import { STATS, PRODUCTS, MARKETS, CLIENTS, SUSTAINABILITY_PILLARS } from '../lib/constants'
+import { CLIENTS, MARKETS, PRODUCTS, STATS, SUSTAINABILITY_PILLARS } from '../lib/constants'
+import { IMAGES, OPERATIONS, PRODUCT_IMAGES } from '../lib/images'
 
 const FEATURED_PRODUCTS = PRODUCTS.filter(p => p.category !== 'Services').slice(0, 6)
 
@@ -17,6 +19,17 @@ export default function Home() {
       />
       {/* ── HERO ──────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col justify-end grain-overlay bg-forest-950 overflow-hidden">
+        {/* Background photograph */}
+        <div className="page-hero-bg">
+          <img
+            src={IMAGES.hero}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-forest-950/30 via-forest-950/50 to-forest-950/85" />
+        </div>
+
         {/* Background rings */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-white/[0.035]" />
@@ -34,7 +47,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="eyebrow text-gold-400/80 text-[10px] mb-8 tracking-[0.28em]"
+            className="eyebrow text-gold-400/80 mb-8 tracking-[0.18em]"
           >
             Nifa Farms Limited · Est. 2018 · Offinso, Ghana
           </motion.p>
@@ -55,7 +68,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="text-white/50 text-base lg:text-lg max-w-lg leading-relaxed mb-12"
           >
-            Ghana's premier cocoa and shea nuts processing enterprise — delivering quality and reliability from farm to global market.
+            Ghana's premier cocoa and shea processing enterprise, trusted worldwide for quality and reliability from farm to market.
           </motion.p>
 
           <motion.div
@@ -99,11 +112,11 @@ export default function Home() {
               <ScrollReveal key={stat.label} delay={i * 0.08}>
                 <div className={`py-12 px-6 lg:px-8 ${i < STATS.length - 1 ? 'lg:border-r border-white/10' : ''} ${i % 2 === 0 ? 'border-r border-white/10 lg:border-r-0' : ''} ${i < 2 ? 'border-b border-white/10 lg:border-b-0' : ''}`}>
                   <div className="flex items-baseline gap-1 mb-2">
-                    <span className="font-display text-4xl lg:text-5xl font-semibold text-white">
+                    <span className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-white">
                       {stat.value}
                     </span>
                     {stat.unit && (
-                      <span className="text-gold-400 text-sm font-medium ml-1">{stat.unit}</span>
+                      <span className="text-gold-400 text-base font-medium ml-1">{stat.unit}</span>
                     )}
                   </div>
                   <p className="text-white/40 text-xs tracking-wider uppercase">{stat.label}</p>
@@ -120,10 +133,10 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
             <div>
               <ScrollReveal>
-                <p className="eyebrow text-forest-600 text-[10px] mb-4">What We Produce</p>
+                <p className="eyebrow text-forest-600 mb-4">What We Produce</p>
               </ScrollReveal>
               <ScrollReveal delay={0.08}>
-                <h2 className="display-heading text-forest-950 text-4xl lg:text-5xl">
+                <h2 className="display-heading text-forest-950 text-4xl sm:text-5xl lg:text-6xl">
                   Premium Cocoa &<br />Shea Products
                 </h2>
               </ScrollReveal>
@@ -141,24 +154,33 @@ export default function Home() {
               <ScrollReveal key={product.id} delay={i * 0.06}>
                 <Link
                   to="/products"
-                  className="group bg-white p-8 lg:p-10 flex flex-col h-full hover:bg-stone-50 transition-colors duration-300"
+                  className="group bg-white flex flex-col h-full hover:bg-stone-50 transition-colors duration-300 overflow-hidden"
                 >
-                  {/* Color swatch */}
-                  <div
-                    className="w-8 h-8 rounded-sm mb-8 transition-transform duration-300 group-hover:scale-110"
-                    style={{ backgroundColor: product.color }}
-                  />
-                  <span className={`eyebrow text-[9px] mb-3 ${
-                    product.category === 'Cocoa' ? 'text-amber-700' : 'text-forest-600'
-                  }`}>
-                    {product.category}
-                  </span>
-                  <h3 className="font-display text-xl font-semibold text-forest-950 mb-3 group-hover:text-forest-700 transition-colors duration-200">
-                    {product.name}
-                  </h3>
-                  <p className="text-stone-500 text-sm leading-relaxed flex-1">{product.description}</p>
-                  <div className="flex items-center gap-1.5 mt-6 text-forest-600 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    Learn more <ArrowRight size={12} />
+                  {PRODUCT_IMAGES[product.id] && (
+                    <FarmImage
+                      src={PRODUCT_IMAGES[product.id]}
+                      alt={product.name}
+                      className="aspect-[16/10] group"
+                      overlay="dark"
+                    />
+                  )}
+                  <div className="p-8 lg:p-10 flex flex-col flex-1">
+                    {/* Color swatch */}
+                    <div
+                      className="w-8 h-8 rounded-sm mb-8 transition-transform duration-300 group-hover:scale-110"
+                      style={{ backgroundColor: product.color }}
+                    />
+                    <span className={`eyebrow mb-3 ${product.category === 'Cocoa' ? 'text-amber-700' : 'text-forest-600'
+                      }`}>
+                      {product.category}
+                    </span>
+                    <h3 className="font-display text-xl font-semibold text-forest-950 mb-3 group-hover:text-forest-700 transition-colors duration-200">
+                      {product.name}
+                    </h3>
+                    <p className="text-stone-500 text-sm leading-relaxed flex-1">{product.description}</p>
+                    <div className="flex items-center gap-1.5 mt-6 text-forest-600 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      Learn more <ArrowRight size={12} />
+                    </div>
                   </div>
                 </Link>
               </ScrollReveal>
@@ -173,25 +195,27 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left: Visual */}
             <ScrollReveal y={30}>
-              <div className="relative">
-                <div className="aspect-[4/3] bg-forest-800 relative overflow-hidden">
-                  {/* Stylised composition */}
-                  <div className="absolute inset-0 grain-overlay" />
-                  <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-forest-950/80 to-transparent" />
-                  <div className="absolute inset-0 flex flex-col justify-end p-10">
-                    <p className="eyebrow text-gold-400/80 text-[10px] mb-3">Est. 2018</p>
-                    <p className="font-display text-white text-2xl font-medium leading-snug">
-                      "Committed to delivering high‑quality, reliable supply solutions."
-                    </p>
-                  </div>
-                  {/* Decorative lines */}
-                  <div className="absolute top-8 right-8 w-16 h-16 border border-white/10" />
-                  <div className="absolute top-10 right-10 w-16 h-16 border border-white/5" />
+              <div className="relative group">
+                <FarmImage
+                  src={IMAGES.farmCrops}
+                  alt="Cocoa and cassava crops at Nifa Farms, Ghana"
+                  className="aspect-[4/3]"
+                  overlay="dark"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 grain-overlay pointer-events-none" />
+                <div className="absolute inset-0 flex flex-col justify-end p-10 z-10">
+                  <p className="eyebrow text-gold-400/80 mb-3">Est. 2018</p>
+                  <p className="font-display text-white text-2xl font-medium leading-snug">
+                    "Committed to delivering high‑quality, reliable supply solutions."
+                  </p>
                 </div>
+                <div className="absolute top-8 right-8 w-16 h-16 border border-white/10 pointer-events-none z-10" />
+                <div className="absolute top-10 right-10 w-16 h-16 border border-white/5 pointer-events-none z-10" />
                 {/* Floating stat */}
                 <div className="absolute -bottom-6 -right-6 bg-gold-500 text-white p-6 hidden lg:block">
                   <p className="font-display text-3xl font-bold">21</p>
-                  <p className="text-[11px] tracking-wider uppercase text-white/80 mt-1">Truck Fleet</p>
+                  <p className="text-xs sm:text-sm tracking-wider uppercase text-white/80 mt-1">Truck Fleet</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -199,10 +223,10 @@ export default function Home() {
             {/* Right: Content */}
             <div>
               <ScrollReveal>
-                <p className="eyebrow text-forest-600 text-[10px] mb-4">About Nifa Farms</p>
+                <p className="eyebrow text-forest-600 mb-4">About Nifa Farms</p>
               </ScrollReveal>
               <ScrollReveal delay={0.08}>
-                <h2 className="display-heading text-forest-950 text-4xl lg:text-5xl mb-6">
+                <h2 className="display-heading text-forest-950 text-4xl sm:text-5xl lg:text-6xl mb-6">
                   Built in Ghana.<br />
                   <em className="not-italic text-forest-600">Built for the World.</em>
                 </h2>
@@ -228,15 +252,15 @@ export default function Home() {
                   ].map(({ icon: Icon, label, sub }) => (
                     <div key={sub} className="border border-stone-100 p-4">
                       <Icon size={16} className="text-forest-600 mb-3" />
-                      <p className="text-sm font-semibold text-forest-950">{label}</p>
-                      <p className="text-xs text-stone-400 mt-0.5">{sub}</p>
+                      <p className="text-base font-semibold text-forest-950">{label}</p>
+                      <p className="text-sm text-stone-400 mt-0.5">{sub}</p>
                     </div>
                   ))}
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={0.24}>
-                <Link to="/about" className="btn-primary mt-10 text-xs">
+                <Link to="/about" className="btn-primary mt-10">
                   Our Full Story
                   <ArrowRight size={14} />
                 </Link>
@@ -246,15 +270,61 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── OPERATIONS ────────────────────────────── */}
+      <section className="section-gap-sm bg-white border-t border-stone-100">
+        <div className="container-wide">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+            <div>
+              <ScrollReveal>
+                <p className="eyebrow text-forest-600 mb-4">Our Operations</p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.08}>
+                <h2 className="display-heading text-forest-950 text-4xl sm:text-5xl lg:text-6xl">
+                  From Field to<br />Global Market.
+                </h2>
+              </ScrollReveal>
+            </div>
+            <ScrollReveal delay={0.12}>
+              <p className="text-stone-500 text-sm leading-relaxed max-w-md">
+                Integrated farming, processing, and logistics — every stage under one roof, from Ghana's heartland to buyers worldwide.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200">
+            {OPERATIONS.map((item, i) => (
+              <ScrollReveal key={item.label} delay={i * 0.07}>
+                <div className="group bg-white h-full">
+                  <FarmImage
+                    src={item.image}
+                    alt={item.label}
+                    className="aspect-[4/3]"
+                    overlay="dark"
+                  />
+                  <div className="p-6 lg:p-7">
+                    <h3 className="font-display text-lg font-semibold text-forest-950 mb-2">{item.label}</h3>
+                    <p className="text-stone-500 text-xs leading-relaxed">{item.caption}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── SUSTAINABILITY ────────────────────────── */}
-      <section className="section-gap bg-forest-900 grain-overlay">
+      <section className="relative section-gap bg-forest-900 grain-overlay overflow-hidden">
+        <div className="page-hero-bg">
+          <img src={IMAGES.facilityAerial} alt="" aria-hidden="true" className="opacity-15" />
+          <div className="absolute inset-0 bg-forest-900/90" />
+        </div>
         <div className="container-wide relative z-10">
           <div className="max-w-xl mb-16">
             <ScrollReveal>
-              <p className="eyebrow text-gold-400/70 text-[10px] mb-4">Our Commitments</p>
+              <p className="eyebrow text-gold-400/70 mb-4">Our Commitments</p>
             </ScrollReveal>
             <ScrollReveal delay={0.08}>
-              <h2 className="display-heading text-white text-4xl lg:text-5xl">
+              <h2 className="display-heading text-white text-4xl sm:text-5xl lg:text-6xl">
                 People, Planet,<br />Performance.
               </h2>
             </ScrollReveal>
@@ -286,8 +356,8 @@ export default function Home() {
         <div className="container-wide">
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-20">
             <ScrollReveal className="shrink-0">
-              <p className="eyebrow text-[10px] text-forest-600 mb-3">Export Markets</p>
-              <h2 className="display-heading text-forest-950 text-3xl lg:text-4xl">
+              <p className="eyebrow text-forest-600 mb-3">Export Markets</p>
+              <h2 className="display-heading text-forest-950 text-3xl sm:text-4xl lg:text-5xl">
                 Our Global<br />Reach
               </h2>
             </ScrollReveal>
@@ -314,7 +384,7 @@ export default function Home() {
       <section className="border-t border-stone-200 py-16 bg-white">
         <div className="container-wide">
           <ScrollReveal>
-            <p className="eyebrow text-[10px] text-stone-400 text-center mb-10">Trusted by</p>
+            <p className="eyebrow text-stone-400 text-center mb-10">Trusted by</p>
           </ScrollReveal>
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-5">
             {CLIENTS.map((client, i) => (
@@ -329,13 +399,17 @@ export default function Home() {
       </section>
 
       {/* ── CTA ───────────────────────────────────── */}
-      <section className="section-gap bg-forest-950 grain-overlay">
+      <section className="relative section-gap bg-forest-950 grain-overlay overflow-hidden">
+        <div className="page-hero-bg">
+          <img src={IMAGES.facilityProcessing} alt="" aria-hidden="true" className="opacity-20" />
+          <div className="absolute inset-0 bg-forest-950/85" />
+        </div>
         <div className="container-narrow relative z-10 text-center">
           <ScrollReveal>
-            <p className="eyebrow text-gold-400/70 text-[10px] mb-6">Partner With Us</p>
+            <p className="eyebrow text-gold-400/70 mb-6">Partner With Us</p>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
-            <h2 className="display-heading text-white text-4xl lg:text-6xl mb-8 text-balance">
+            <h2 className="display-heading text-white text-4xl sm:text-5xl lg:text-6xl mb-8 text-balance">
               Ready to source Ghana's finest cocoa and shea products?
             </h2>
           </ScrollReveal>

@@ -48,13 +48,13 @@ export default function Header() {
               aria-label="Nifa Farms Limited – Home"
             >
               <span className={clsx(
-                'font-display font-semibold tracking-wide transition-colors duration-200 text-lg lg:text-xl',
+                'font-display font-semibold tracking-wide transition-colors duration-200 text-xl lg:text-2xl',
                 transparent ? 'text-white' : 'text-white',
               )}>
                 NIFA FARMS
               </span>
               <span className={clsx(
-                'text-[10px] tracking-[0.22em] uppercase transition-colors duration-200',
+                'text-xs sm:text-sm tracking-[0.2em] uppercase transition-colors duration-200',
                 transparent ? 'text-white/50' : 'text-gold-400/70',
               )}>
                 Limited
@@ -68,7 +68,7 @@ export default function Header() {
                   key={href}
                   to={href}
                   className={({ isActive }) => clsx(
-                    'text-sm font-medium tracking-wide transition-all duration-200 relative py-1 group',
+                    'text-sm lg:text-base font-medium tracking-wide transition-all duration-200 relative py-1 group',
                     transparent
                       ? isActive ? 'text-white' : 'text-white/65 hover:text-white'
                       : isActive ? 'text-white' : 'text-white/55 hover:text-white',
@@ -87,7 +87,7 @@ export default function Header() {
               ))}
               <Link
                 to="/contact"
-                className="ml-2 btn-primary text-xs px-5 py-2.5 tracking-[0.06em]"
+                className="ml-2 btn-primary px-5 py-2.5 tracking-[0.06em]"
               >
                 Get in Touch
               </Link>
@@ -120,8 +120,8 @@ export default function Header() {
           >
             <div className="container-wide flex items-center h-16">
               <Link to="/" className="flex flex-col leading-none">
-                <span className="font-display font-semibold text-white text-lg tracking-wide">NIFA FARMS</span>
-                <span className="text-[10px] tracking-[0.22em] uppercase text-gold-400/70">Limited</span>
+                <span className="font-display font-semibold text-white text-xl tracking-wide">NIFA FARMS</span>
+                <span className="text-xs sm:text-sm tracking-[0.2em] uppercase text-gold-400/70">Limited</span>
               </Link>
             </div>
 
@@ -135,7 +135,7 @@ export default function Header() {
                 >
                   <Link
                     to={href}
-                    className="block py-4 font-display text-3xl font-medium text-white/80 hover:text-white transition-colors duration-200 border-b border-white/8"
+                    className="block py-4 font-display text-3xl sm:text-4xl font-medium text-white/80 hover:text-white transition-colors duration-200 border-b border-white/8"
                   >
                     {label}
                   </Link>
@@ -154,7 +154,7 @@ export default function Header() {
             </nav>
 
             <div className="container-wide pb-10">
-              <p className="text-white/30 text-xs tracking-wider">+233 247 023 698</p>
+              <p className="text-white/30 text-sm sm:text-base tracking-wider">+233 247 023 698</p>
             </div>
           </motion.div>
         )}

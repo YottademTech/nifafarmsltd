@@ -9,13 +9,26 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
+  @media (min-width: 640px) {
+    html {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
   body {
-    @apply bg-stone-50 text-stone-950 font-sans;
+    @apply bg-stone-50 text-stone-950 font-sans text-base leading-relaxed;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
 
@@ -34,11 +47,23 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold tracking-[0.2em] uppercase;
+    @apply text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase;
   }
 
   .display-heading {
-    @apply font-display font-semibold leading-[1.05] tracking-[-0.02em];
+    @apply font-display font-semibold leading-[1.08] tracking-[-0.02em];
+  }
+
+  .text-body {
+    @apply text-base sm:text-lg leading-relaxed;
+  }
+
+  .text-body-sm {
+    @apply text-sm sm:text-base leading-relaxed;
+  }
+
+  .text-caption {
+    @apply text-xs sm:text-sm tracking-wide;
   }
 
   .section-gap {
@@ -50,18 +75,18 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-forest-600 text-white px-7 py-3.5 text-sm font-medium
+    @apply inline-flex items-center gap-2 bg-forest-600 text-white px-7 py-3.5 text-sm sm:text-base font-medium
            tracking-wide transition-all duration-200 hover:bg-forest-500 active:scale-[0.98];
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 text-sm font-medium tracking-wide
+    @apply inline-flex items-center gap-2 text-sm sm:text-base font-medium tracking-wide
            transition-all duration-200 hover:opacity-70;
   }
 
   .btn-outline {
     @apply inline-flex items-center gap-2 border border-current px-7 py-3.5
-           text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-70 active:scale-[0.98];
+           text-sm sm:text-base font-medium tracking-wide transition-all duration-200 hover:opacity-70 active:scale-[0.98];
   }
 
   /* Subtle grain overlay on dark sections */
@@ -89,5 +114,13 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .page-hero-bg {
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  .page-hero-bg img {
+    @apply w-full h-full object-cover;
   }
 }
