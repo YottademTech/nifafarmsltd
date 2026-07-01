@@ -227,7 +227,7 @@ export const CLIENTS = [
 
 export const COMPANY_INFO = {
   phone: '+233 247 023 698',
-  email: 'nifashreg@gmail.com',
+  email: 'tinkler@nifafarms.com',
   address: 'Offinso – Ahenkro, Ashanti Region, Ghana, West Africa',
   founded: '2018',
   solicitors: {

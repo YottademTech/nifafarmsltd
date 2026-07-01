@@ -29,6 +29,7 @@ export default function Contact() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -37,10 +38,27 @@ export default function Contact() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setLoading(true)
-    // Simulate API call
-    await new Promise(r => setTimeout(r, 1200))
-    setLoading(false)
-    setSubmitted(true)
+    setSubmitError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      const data = await response.json().catch(() => ({})) as { error?: string }
+
+      if (!response.ok) {
+        throw new Error(data.error ?? 'Unable to send your message. Please try again.')
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Unable to send your message. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -124,21 +142,13 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* Secondary contact */}
+              {/* Inquiry note */}
               <ScrollReveal delay={0.24}>
                 <div className="mt-12 p-6 bg-forest-950 text-white">
-                  <p className="eyebrow text-gold-400/70 mb-4">Alternative Contact</p>
-                  <a
-                    href="mailto:dericktinkler2231@gmail.com"
-                    className="text-base text-white/60 hover:text-white transition-colors duration-200 block"
-                  >
-                    dericktinkler2231@gmail.com
-                  </a>
-                  <div className="divider-dark mt-5 pt-5">
-                    <p className="text-white/25 text-sm sm:text-base leading-relaxed">
-                      For investment and corporate inquiries, please reference your company and purpose in all correspondence.
-                    </p>
-                  </div>
+                  <p className="eyebrow text-gold-400/70 mb-4">Corporate Inquiries</p>
+                  <p className="text-white/50 text-sm sm:text-base leading-relaxed">
+                    For investment and export partnerships, please reference your company and purpose in all correspondence.
+                  </p>
                 </div>
               </ScrollReveal>
             </div>
@@ -165,7 +175,7 @@ export default function Contact() {
                         Thank you for reaching out. A member of the Nifa Farms team will respond to your enquiry within two business days.
                       </p>
                       <button
-                        onClick={() => { setSubmitted(false); setForm({ name: '', company: '', email: '', subject: '', message: '' }) }}
+                        onClick={() => { setSubmitted(false); setSubmitError(null); setForm({ name: '', company: '', email: '', subject: '', message: '' }) }}
                         className="btn-ghost text-forest-600"
                       >
                         Send another message
@@ -281,6 +291,15 @@ export default function Contact() {
                           </>
                         )}
                       </button>
+
+                      {submitError && (
+                        <p className="text-red-700 text-sm sm:text-base leading-relaxed" role="alert">
+                          {submitError}{' '}
+                          <a href={`mailto:${COMPANY_INFO.email}`} className="underline hover:text-red-900">
+                            Email us directly
+                          </a>
+                        </p>
+                      )}
                     </motion.form>
                   )}
                 </AnimatePresence>
