@@ -1,0 +1,113 @@
+<!--
+  Nifa Farms — EmailJS contact form template
+  Paste into EmailJS → Email Templates → Create / Edit template → Content (HTML)
+
+  Template settings (EmailJS dashboard):
+    To Email:     tinkler@nifafarms.com
+    From Name:    Nifa Farms Website
+    Reply To:     {{reply_to}}
+    Subject:      [Nifa Farms] {{subject}} — {{name}}
+
+  Variables (must match src/lib/emailjs.ts):
+    {{name}} {{company}} {{email}} {{subject}} {{message}} {{reply_to}}
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New enquiry — Nifa Farms</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f6f2;font-family:Georgia,'Times New Roman',serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f4f6f2;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;background-color:#ffffff;border:1px solid #d5ddd0;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color:#0f2418;padding:28px 32px;text-align:center;">
+              <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;font-family:Arial,Helvetica,sans-serif;">
+                Nifa Farms Limited
+              </p>
+              <h1 style="margin:0;font-size:22px;font-weight:600;color:#ffffff;line-height:1.3;">
+                New website enquiry
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:32px;background-color:#fafbf9;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="padding-bottom:16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#5c6b5e;text-transform:uppercase;letter-spacing:0.12em;">
+                    Contact details
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:14px 0;border-bottom:1px solid #e8ede5;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#1a1a1a;">
+                    <strong style="color:#0f2418;display:inline-block;min-width:88px;">Name</strong>
+                    {{name}}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:14px 0;border-bottom:1px solid #e8ede5;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#1a1a1a;">
+                    <strong style="color:#0f2418;display:inline-block;min-width:88px;">Company</strong>
+                    {{company}}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:14px 0;border-bottom:1px solid #e8ede5;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#1a1a1a;">
+                    <strong style="color:#0f2418;display:inline-block;min-width:88px;">Email</strong>
+                    <a href="mailto:{{email}}" style="color:#1b4332;text-decoration:none;">{{email}}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:14px 0;border-bottom:1px solid #e8ede5;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#1a1a1a;">
+                    <strong style="color:#0f2418;display:inline-block;min-width:88px;">Subject</strong>
+                    {{subject}}
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Message -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:28px;">
+                <tr>
+                  <td style="padding-bottom:12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#5c6b5e;text-transform:uppercase;letter-spacing:0.12em;">
+                    Message
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background-color:#ffffff;border-left:4px solid #1b4332;padding:20px 24px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;color:#333333;white-space:pre-wrap;">{{message}}</td>
+                </tr>
+              </table>
+
+              <!-- Reply CTA -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:32px;">
+                <tr>
+                  <td align="center">
+                    <a href="mailto:{{email}}?subject=Re%3A%20{{subject}}"
+                       style="display:inline-block;background-color:#0f2418;color:#ffffff;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;padding:14px 28px;letter-spacing:0.04em;">
+                      Reply to {{name}}
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding:20px 32px;background-color:#f0f3ef;border-top:1px solid #e0e6dc;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#7a8578;">
+              Sent from the contact form at
+              <a href="https://nifafarms.com/contact" style="color:#1b4332;text-decoration:none;">nifafarms.com</a>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

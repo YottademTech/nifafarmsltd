@@ -5,6 +5,7 @@ import ScrollReveal from '../components/ui/ScrollReveal'
 import SEO from '../components/ui/SEO'
 import { COMPANY_INFO } from '../lib/constants'
 import { IMAGES } from '../lib/images'
+import { isEmailJsConfigured, sendContactForm } from '../lib/emailjs'
 
 interface FormState {
   name: string
@@ -40,22 +41,21 @@ export default function Contact() {
     setLoading(true)
     setSubmitError(null)
 
+    if (!isEmailJsConfigured()) {
+      setSubmitError('The contact form is not configured yet. Please email us directly.')
+      setLoading(false)
+      return
+    }
+
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-
-      const data = await response.json().catch(() => ({})) as { error?: string }
-
-      if (!response.ok) {
-        throw new Error(data.error ?? 'Unable to send your message. Please try again.')
-      }
-
+      await sendContactForm(form)
       setSubmitted(true)
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : 'Unable to send your message. Please try again.')
+      setSubmitError(
+        err instanceof Error && err.message.startsWith('Missing VITE_')
+          ? 'The contact form is not configured yet. Please email us directly.'
+          : 'Unable to send your message. Please try again or email us directly.',
+      )
     } finally {
       setLoading(false)
     }
