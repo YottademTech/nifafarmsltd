@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 import { NAV_LINKS, COMPANY_INFO, PRODUCTS } from '../../lib/constants'
+import Logo from '../ui/Logo'
 
 const PRODUCT_LINKS = PRODUCTS.filter(p => p.category !== 'Services').slice(0, 6)
 
@@ -12,10 +13,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex flex-col leading-none mb-6 group">
-              <span className="font-display font-semibold text-2xl sm:text-3xl tracking-wide">NIFA FARMS</span>
-              <span className="text-xs sm:text-sm tracking-[0.2em] uppercase text-gold-400/70 mt-0.5">Limited</span>
-            </Link>
+            <Logo className="mb-6" imageClassName="h-14 lg:h-16" />
             <p className="text-white/45 text-base sm:text-lg leading-relaxed max-w-xs">
               Ghana's premier cocoa and shea nuts processing enterprise. From farm to global market.
             </p>
@@ -87,14 +85,6 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
-
-            <a
-              href={`mailto:${COMPANY_INFO.email}`}
-              className="inline-flex items-center gap-1.5 mt-8 text-gold-400 text-base font-medium hover:text-gold-300 transition-colors duration-200"
-            >
-              Send us a message
-              <ArrowUpRight size={14} />
-            </a>
           </div>
         </div>
 

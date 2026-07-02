@@ -1,4 +1,5 @@
 export const IMAGES = {
+  logo: '/images/logo.jpeg',
   hero: '/images/facility-nifa-building.jpg',
   facilityBuilding: '/images/facility-nifa-building.jpg',
   facilityProcessing: '/images/facility-processing-plant.jpg',

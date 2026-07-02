@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react'
 import { clsx } from 'clsx'
 import { useAppStore } from '../../store/useAppStore'
 import { NAV_LINKS } from '../../lib/constants'
+import Logo from '../ui/Logo'
 
 export default function Header() {
   const { scrolled, setScrolled, mobileMenuOpen, setMobileMenuOpen } = useAppStore()
@@ -41,25 +42,7 @@ export default function Header() {
       >
         <div className="container-wide">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <Link
-              to="/"
-              className="flex flex-col leading-none group"
-              aria-label="Nifa Farms Limited – Home"
-            >
-              <span className={clsx(
-                'font-display font-semibold tracking-wide transition-colors duration-200 text-xl lg:text-2xl',
-                transparent ? 'text-white' : 'text-white',
-              )}>
-                NIFA FARMS
-              </span>
-              <span className={clsx(
-                'text-xs sm:text-sm tracking-[0.2em] uppercase transition-colors duration-200',
-                transparent ? 'text-white/50' : 'text-gold-400/70',
-              )}>
-                Limited
-              </span>
-            </Link>
+            <Logo />
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
@@ -119,10 +102,7 @@ export default function Header() {
             className="fixed inset-0 z-40 bg-forest-950 flex flex-col"
           >
             <div className="container-wide flex items-center h-16">
-              <Link to="/" className="flex flex-col leading-none">
-                <span className="font-display font-semibold text-white text-xl tracking-wide">NIFA FARMS</span>
-                <span className="text-xs sm:text-sm tracking-[0.2em] uppercase text-gold-400/70">Limited</span>
-              </Link>
+              <Logo />
             </div>
 
             <nav className="flex-1 flex flex-col justify-center container-wide gap-1">

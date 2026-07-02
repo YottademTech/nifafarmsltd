@@ -91,6 +91,37 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Map */}
+      <section className="bg-stone-100">
+        <div className="container-wide py-10 lg:py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-stone-200">
+          <div className="flex items-start gap-4">
+            <MapPin size={20} className="text-forest-600 shrink-0 mt-0.5" />
+            <div>
+              <p className="font-display text-forest-950 text-xl font-medium">Nifa Farms Limited</p>
+              <p className="text-stone-500 text-base mt-1">{COMPANY_INFO.address}</p>
+            </div>
+          </div>
+          <a
+            href="https://maps.google.com/?q=NIFA+FARMS+LIMITED"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-forest-600 text-base font-medium hover:text-forest-500 transition-colors duration-200 shrink-0"
+          >
+            Open in Google Maps →
+          </a>
+        </div>
+        <div className="relative w-full h-72 lg:h-[450px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1054826906793!2d-1.6470909246727592!3d6.877964393120866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdbbb85dc8a63c5%3A0x94d80d5cb4b0d173!2sNIFA%20FARMS%20LIMITED!5e0!3m2!1sen!2sgh!4v1782825808653!5m2!1sen!2sgh"
+            title="Nifa Farms Limited location on Google Maps"
+            className="absolute inset-0 w-full h-full border-0"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
+      </section>
+
       {/* Main Contact Section */}
       <section className="section-gap bg-stone-50">
         <div className="container-wide">
@@ -306,37 +337,6 @@ export default function Contact() {
               </ScrollReveal>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Map */}
-      <section className="bg-stone-100">
-        <div className="container-wide py-10 lg:py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-stone-200">
-          <div className="flex items-start gap-4">
-            <MapPin size={20} className="text-forest-600 shrink-0 mt-0.5" />
-            <div>
-              <p className="font-display text-forest-950 text-xl font-medium">Nifa Farms Limited</p>
-              <p className="text-stone-500 text-base mt-1">{COMPANY_INFO.address}</p>
-            </div>
-          </div>
-          <a
-            href="https://maps.google.com/?q=NIFA+FARMS+LIMITED"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-forest-600 text-base font-medium hover:text-forest-500 transition-colors duration-200 shrink-0"
-          >
-            Open in Google Maps →
-          </a>
-        </div>
-        <div className="relative w-full h-72 lg:h-[450px]">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1054826906793!2d-1.6470909246727592!3d6.877964393120866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdbbb85dc8a63c5%3A0x94d80d5cb4b0d173!2sNIFA%20FARMS%20LIMITED!5e0!3m2!1sen!2sgh!4v1782825808653!5m2!1sen!2sgh"
-            title="Nifa Farms Limited location on Google Maps"
-            className="absolute inset-0 w-full h-full border-0"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
         </div>
       </section>
     </>
