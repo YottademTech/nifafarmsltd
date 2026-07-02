@@ -229,6 +229,8 @@ export const COMPANY_INFO = {
   phone: '+233 247 023 698',
   email: 'tinkler@nifafarms.com',
   address: 'Offinso – Ahenkro, Ashanti Region, Ghana, West Africa',
+  poBox: 'P.O. Box SE 1598, Offinso Ahenkro',
+  ghanaPostGps: 'AF-0626-4576',
   founded: '2018',
   solicitors: {
     name: 'ENE @ LAW',

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone, Mail, Mailbox, MapPinned } from 'lucide-react'
 import { NAV_LINKS, COMPANY_INFO, PRODUCTS } from '../../lib/constants'
 import Logo from '../ui/Logo'
 
@@ -82,6 +82,21 @@ export default function Footer() {
                 <div className="flex items-start gap-3 text-base text-white/55">
                   <MapPin size={14} className="mt-0.5 shrink-0 text-gold-500" />
                   <span className="leading-relaxed">{COMPANY_INFO.address}</span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-start gap-3 text-base text-white/55">
+                  <Mailbox size={14} className="mt-0.5 shrink-0 text-gold-500" />
+                  <span className="leading-relaxed">{COMPANY_INFO.poBox}</span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-start gap-3 text-base text-white/55">
+                  <MapPinned size={14} className="mt-0.5 shrink-0 text-gold-500" />
+                  <span className="leading-relaxed">
+                    Ghana Post GPS:{' '}
+                    <span className="font-medium tracking-wide text-white/70">{COMPANY_INFO.ghanaPostGps}</span>
+                  </span>
                 </div>
               </li>
             </ul>

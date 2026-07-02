@@ -29,10 +29,15 @@ export default function Products() {
         path="/products"
       />
       {/* Page Hero */}
-      <section className="relative bg-forest-950 pt-36 pb-20 grain-overlay overflow-hidden">
+      <section className="relative bg-forest-950 pt-36 pb-20 grain-overlay overflow-hidden min-h-[380px] lg:min-h-[440px]">
         <div className="page-hero-bg">
-          <img src={IMAGES.cocoaWarehouse} alt="" aria-hidden="true" />
-          <div className="absolute inset-0 bg-gradient-to-b from-forest-950/30 via-forest-950/50 to-forest-950/85" />
+          <img
+            src={IMAGES.cocoaWarehouse}
+            alt=""
+            aria-hidden="true"
+            className="object-[center_35%] sm:object-[center_30%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-forest-950/40 via-forest-950/55 to-forest-950/90" />
         </div>
         <div className="container-wide relative z-10">
           <ScrollReveal>
