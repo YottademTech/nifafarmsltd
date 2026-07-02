@@ -42,7 +42,7 @@ export default function Header() {
       >
         <div className="container-wide">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            <Logo />
+            <Logo showText />
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
@@ -102,7 +102,7 @@ export default function Header() {
             className="fixed inset-0 z-40 bg-forest-950 flex flex-col"
           >
             <div className="container-wide flex items-center h-16">
-              <Logo />
+              <Logo showText />
             </div>
 
             <nav className="flex-1 flex flex-col justify-center container-wide gap-1">
