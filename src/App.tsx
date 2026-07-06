@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import ScrollToTopButton from './components/ui/ScrollToTopButton'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import About from './pages/About'
@@ -31,6 +32,7 @@ function Layout() {
         </Routes>
       </main>
       <Footer />
+      <ScrollToTopButton />
     </>
   )
 }
