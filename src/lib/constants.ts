@@ -167,6 +167,19 @@ export const BOARD_MEMBERS = [
     qualifications: ['Part II ACCA', 'HND – Kumasi Polytechnic'],
     image: '/images/leadership-03.jpg',
   },
+  {
+    name: 'Bismark Nsiah-Abiagye',
+    role: 'Secretary',
+    experience: '12+ years',
+    fields: 'Commercial Law, Insurance Law',
+    qualifications: [
+      'Barrister-at-Law – Ghana School of Law',
+      'Diploma in Insurance – Ghana Insurance College, Accra',
+      'LLB – KNUST',
+      'B.A. Political Science – University of Ghana',
+    ],
+    image: '/images/leadership-06.jpg',
+  },
 ]
 
 export const MANAGEMENT_ROLES = [
